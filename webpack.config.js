@@ -1,5 +1,7 @@
-var path    = require('path');
-var webpack = require('webpack');
+var path                  = require('path');
+var webpack               = require('webpack');
+var WebpackNotifierPlugin = require('webpack-notifier');
+
 
 module.exports = {
 	devtool: 'source-map',
@@ -12,7 +14,11 @@ module.exports = {
 		publicPath: '/static/'
 	},
 	plugins: [
-
+		new WebpackNotifierPlugin({
+			title:           'Webpack',
+			contentImage:    './node_modules/cd-utils/assets/test-pass.png',
+			excludeWarnings: true
+		}),
 	],
 	module: {
 		preLoaders: [
@@ -24,4 +30,5 @@ module.exports = {
 		]
 	}
 };
+
 
