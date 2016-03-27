@@ -21,7 +21,7 @@ gulp.task('copy:html', () => {
 		.on('error', handleErrors)
 		.pipe(plumber())
 		.pipe(copy(config.copy.html.dest, {prefix: 1}))
-		.pipe(msg.flush.success(`*** ${utils.ellipsis(config.copy.html.src,50)} ***`));
+		.pipe(msg.flush.success(`*** HTML Assets Copied ${utils.ellipsis(config.copy.html.src,50)} ${new Date()} ***`))
 });
 
 gulp.task('copy:assets', () => {

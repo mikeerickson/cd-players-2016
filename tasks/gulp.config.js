@@ -19,8 +19,8 @@ module.exports = {
 	},
 
 	scripts: {
-		src: ['.src/js/**/*.js'],
-		main: './src/js/index.jsx',
+		src: ['.src/js/**/*.js','./src/js/**/*.jsx'],
+		entry: './src/js/index.jsx',
 		dest: './dist/js',
 		filename: 'app.js'
 	},

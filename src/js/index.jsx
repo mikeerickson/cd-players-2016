@@ -2,17 +2,19 @@ import React, {Component} from 'react'
 import ReactDOM           from 'react-dom'
 
 export default class App extends Component {
-	
+
 	static propTypes    = {}
 	static defaultProps = {}
 
 	constructor(props) {
 		super(props)
-		
-		this.state = {}
-	}r
-	r
-	
+
+		this.state = {
+			fname: 'Mike',
+			lname: 'Erickson'
+		}
+	}
+
 	render() {
 		return (
 			<div>

@@ -12,8 +12,8 @@ gulp.task('less', () => {
 			paths: [ path.join(__dirname, 'less', 'includes') ]
 		}))
 		.pipe(gulp.dest(config.less.dist))
-		.pipe(msg.flush.success(`*** LESS Files Compiled [${config.less.dist}/${config.less.filename}] ***`));
+		.pipe(msg.flush.success(`*** LESS Files Compiled [${config.less.dist}/${config.less.filename}] ${new Date()} ***`));
 })
 
-gulp.task('styles', ['styles'])
-gulp.task('build:styles', ['styles'])
+gulp.task('styles', ['less'])
+gulp.task('build:styles', ['less'])

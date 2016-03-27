@@ -83,7 +83,10 @@
 	
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 	
-			_this.state = {};
+			_this.state = {
+				fname: 'Mike',
+				lname: 'Erickson'
+			};
 			return _this;
 		}
 	

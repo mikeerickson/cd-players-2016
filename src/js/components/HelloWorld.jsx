@@ -8,7 +8,7 @@ class HelloWorld extends Component {
 	render() {
 		return (
 			<div>
-				<h3>Hello `{this.props.name}` Family From Component</h3>
+				<h2>Hello `{this.props.name}` Family From Component</h2>
 			</div>
 		)
 	}
