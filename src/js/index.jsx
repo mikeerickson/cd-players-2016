@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ReactDOM           from 'react-dom'
+import Teams              from './components/Teams.jsx'
 
 export default class App extends Component {
 
@@ -11,7 +12,8 @@ export default class App extends Component {
 
 		this.state = {
 			fname: 'Mike',
-			lname: 'Erickson'
+			lname: 'Erickson',
+			email: 'mike.erickson@mac.com'
 		}
 	}
 
@@ -19,6 +21,7 @@ export default class App extends Component {
 		return (
 			<div>
 				<h1>Hello World from React</h1>
+				<Teams />
 			</div>
 		)
 	}
