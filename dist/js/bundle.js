@@ -92,6 +92,7 @@
 				lname: 'Erickson',
 				email: 'mike.erickson@mac.com'
 			};
+	
 			return _this;
 		}
 	
@@ -104,7 +105,7 @@
 					_react2.default.createElement(
 						'h1',
 						null,
-						'Hello World from React'
+						'Players 2016'
 					),
 					_react2.default.createElement(_Teams2.default, null)
 				);
@@ -19746,6 +19747,14 @@
 	
 	var _reactSimpleTable2 = _interopRequireDefault(_reactSimpleTable);
 	
+	var _AppUtilsEx = __webpack_require__(169);
+	
+	var _AppUtilsEx2 = _interopRequireDefault(_AppUtilsEx);
+	
+	var _AppUtils = __webpack_require__(170);
+	
+	var _AppUtils2 = _interopRequireDefault(_AppUtils);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19762,10 +19771,18 @@
 	
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Teams).call(this, props));
 	
+			// console.log(AppUtils.formatAverage(1,2));
+	
+	
 			_this.state = {
-				teamHeaders: ['teamID', 'name', 'park', 'divID', 'G', 'W', 'L', 'R', 'AB', 'H', '2B', '3B', 'HR', 'BB', 'SO', 'SB', 'CS'],
+				teamHeaders: ['Team ID', 'Team Name', 'Park', 'Div ID', 'G', 'W', 'L', 'PCT', 'R', 'AB', 'H', '2B', '3B', 'HR', 'BB', 'SO', 'SB', 'CS'],
 				teamList: []
 			};
+			var inst = new _AppUtils2.default();
+	
+			var val = inst.formatAverage(1, 2);
+			console.log('val', val);
+	
 			return _this;
 		}
 	
@@ -19795,13 +19812,14 @@
 				return _superagent2.default.get('http://localhost:3000/teams').set('X-API-Key', 'abc-123').set('Accept', 'application/json').end(function (err, res) {
 					var teamList = res.body.map(function (row) {
 						return {
-							teamID: row.teamID,
-							name: row.name,
-							park: row.park,
-							divID: this.getDivision(row.divID),
+							'Team ID': row.teamID,
+							'Team Name': row.name,
+							'Park': row.park,
+							'Div ID': this.getDivision(row.divID),
 							G: row.G,
 							W: row.W,
 							L: row.L,
+							PCT: _AppUtilsEx2.default.formatAverage(row.W, 162),
 							R: row.R,
 							AB: row.AB,
 							H: row.H,
@@ -21467,6 +21485,59 @@
 	  obj[keys[i]] = value;
 	  return value;
 	}
+
+/***/ },
+/* 169 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	var AppUtilsEx = {
+		formatAverage: function formatAverage(x, y) {
+			if (x === 0) return '.000';
+			if (x === y) return '1.000';
+	
+			return '.' + Math.round(x / y * 1000, 0);
+		}
+	};
+	
+	module.exports = AppUtilsEx;
+
+/***/ },
+/* 170 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var AppUtils = function () {
+		function AppUtils() {
+			_classCallCheck(this, AppUtils);
+	
+			console.log('hello world');
+		}
+	
+		_createClass(AppUtils, [{
+			key: 'formatAverage',
+			value: function formatAverage(x, y) {
+				if (x === 0) return '.000';
+				if (x === y) return '1.000';
+	
+				return '.' + Math.round(x / y * 1000, 0);
+			}
+		}]);
+	
+		return AppUtils;
+	}();
+
+	exports.default = AppUtils;
 
 /***/ }
 /******/ ]);

@@ -15,12 +15,13 @@ export default class App extends Component {
 			lname: 'Erickson',
 			email: 'mike.erickson@mac.com'
 		}
+
 	}
 
 	render() {
 		return (
 			<div>
-				<h1>Hello World from React</h1>
+				<h1>Players 2016</h1>
 				<Teams />
 			</div>
 		)

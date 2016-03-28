@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import request            from 'superagent'
 import SimpleTable        from 'react-simple-table'
+import AppUtilsEx         from '../AppUtilsEx'
+import AppUtils           from '../AppUtils'
 
 export default class Teams extends Component {
 
@@ -8,11 +10,18 @@ export default class Teams extends Component {
 	static defaultProps = {}
 
 	constructor(props) {
+
+		// console.log(AppUtils.formatAverage(1,2));
 		super(props)
 		this.state = {
-			teamHeaders: ['teamID','name','park','divID','G','W','L','R','AB','H','2B','3B','HR','BB','SO','SB','CS'],
+			teamHeaders: ['Team ID','Team Name','Park','Div ID','G','W','L','PCT','R','AB','H','2B','3B','HR','BB','SO','SB','CS'],
 			teamList: []
 		}
+		let inst = new AppUtils();
+
+		let val = inst.formatAverage(1, 2);
+		console.log('val', val);
+
 	}
 
 	componentWillMount() {
@@ -42,13 +51,14 @@ export default class Teams extends Component {
 				.end(function(err,res) {
 					let teamList = res.body.map(function(row){
 						return {
-							teamID: row.teamID,
-							name: row.name,
-							park: row.park,
-							divID: this.getDivision(row.divID),
+							'Team ID': row.teamID,
+							'Team Name': row.name,
+							'Park': row.park,
+							'Div ID': this.getDivision(row.divID),
 							G: row.G,
 							W: row.W,
 							L: row.L,
+							PCT: AppUtilsEx.formatAverage(row.W, 162),
 							R: row.R,
 							AB: row.AB,
 							H: row.H,
