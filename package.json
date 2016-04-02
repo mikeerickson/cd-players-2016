@@ -32,7 +32,8 @@
     "mocha",
     "jest",
     "babel",
-    "bootstrap"
+    "bootstrap",
+    "templates"
   ],
   "author": "Mike Erickson <codedungeon@gmail.com> (https://github.com/mikeerickson)",
   "license": "MIT",
@@ -60,6 +61,7 @@
     "gulp-messenger": "0.13.1",
     "gulp-mocha": "2.2.0",
     "gulp-plumber": "1.1.0",
+    "gulp-react-templates": "0.2.0",
     "gulp-todo": "4.1.0",
     "gulp-webpack": "1.5.0",
     "istanbul": "0.4.2",
@@ -75,6 +77,7 @@
     "react-addons-test-utils": "0.14.7",
     "react-dom": "0.14.7",
     "react-simple-table": "1.0.0",
+    "react-templates": "0.4.1",
     "require-dir": "0.3.0",
     "run-sequence": "1.1.5",
     "shelljs": "0.6.0",

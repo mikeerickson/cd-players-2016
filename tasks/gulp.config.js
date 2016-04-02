@@ -45,6 +45,11 @@ module.exports = {
 		dest: './dist'
 	},
 
+	templates: {
+		src: ['./src/js/templates/**/*.rt'],
+		dest: './src/js/templates/'
+	},
+	
 	todo: {
 		src: [
 			'./src/js/**/*.js',
