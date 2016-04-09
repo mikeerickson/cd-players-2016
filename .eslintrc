@@ -20,7 +20,9 @@
     "react/jsx-no-undef": 1,
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
-    "comma-dangle": 0
+    "comma-dangle": 0,
+    "no-undef": 0,
+    "no-unused-vars": 0
   }
 }
 

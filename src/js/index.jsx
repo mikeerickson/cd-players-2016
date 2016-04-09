@@ -1,6 +1,10 @@
+/* eslint no-undef:0*/
+/* eslint no-unused-vars:0*/
+
 import React, {Component} from 'react'
 import ReactDOM           from 'react-dom'
 import Teams              from './components/Teams.jsx'
+import Managers           from './components/Managers.jsx'
 
 export default class App extends Component {
 
@@ -21,8 +25,8 @@ export default class App extends Component {
 	render() {
 		return (
 			<div>
-				<h1>Players 2016</h1>
-				<Teams />
+				<h1>Managers 2016</h1>
+				<Managers />
 			</div>
 		)
 	}

@@ -71,13 +71,18 @@
 	
 	var _Teams2 = _interopRequireDefault(_Teams);
 	
+	var _Managers = __webpack_require__(171);
+	
+	var _Managers2 = _interopRequireDefault(_Managers);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint no-undef:0*/
+	/* eslint no-unused-vars:0*/
 	
 	var App = function (_Component) {
 		_inherits(App, _Component);
@@ -105,9 +110,9 @@
 					_react2.default.createElement(
 						'h1',
 						null,
-						'Players 2016'
+						'Managers 2016'
 					),
-					_react2.default.createElement(_Teams2.default, null)
+					_react2.default.createElement(_Managers2.default, null)
 				);
 			}
 		}]);
@@ -21538,6 +21543,147 @@
 	}();
 
 	exports.default = AppUtils;
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _superagent = __webpack_require__(161);
+	
+	var _superagent2 = _interopRequireDefault(_superagent);
+	
+	var _reactSimpleTable = __webpack_require__(167);
+	
+	var _reactSimpleTable2 = _interopRequireDefault(_reactSimpleTable);
+	
+	var _AppUtilsEx = __webpack_require__(169);
+	
+	var _AppUtilsEx2 = _interopRequireDefault(_AppUtilsEx);
+	
+	var _AppUtils = __webpack_require__(170);
+	
+	var _AppUtils2 = _interopRequireDefault(_AppUtils);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint no-undef:0*/
+	/* eslint no-unused-vars:0*/
+	
+	var Managers = function (_Component) {
+		_inherits(Managers, _Component);
+	
+		/*
+	  {
+	  "_id": {
+	  "$oid": "551cc1501a45fa54e97af5bf"
+	  },
+	  "playerID": "gibbojo02",
+	  "yearID": 2014,
+	  "teamID": "TOR",
+	  "lgID": "AL",
+	  "first_name": "John",
+	  "last_name": "Gibbons",
+	  "G": 162,
+	  "W": 83,
+	  "L": 79,
+	  "rank": 3
+	  },
+	  */
+	
+		function Managers(props) {
+			_classCallCheck(this, Managers);
+	
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Managers).call(this, props));
+	
+			// console.log(AppUtils.formatAverage(1,2));
+	
+	
+			_this.state = {
+				managerHeaders: ['Player ID', 'Team ID', 'lgID', 'First Name', 'Last Name', 'G', 'W', 'L', 'PCT', 'rank'],
+				managerList: []
+			};
+			var inst = new _AppUtils2.default();
+			return _this;
+		}
+	
+		_createClass(Managers, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				this.getManagerList();
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
+			key: 'getDivision',
+			value: function getDivision(divID) {
+				switch (divID) {
+					case 'E':
+						return 'East';
+					case 'W':
+						return 'West';
+					case 'C':
+						return 'Central';
+				}
+			}
+		}, {
+			key: 'getManagerList',
+			value: function getManagerList() {
+				return _superagent2.default.get('http://localhost:3000/managers').set('X-API-Key', 'abc-123').set('Accept', 'application/json').end(function (err, res) {
+					var managerList = res.body.map(function (row) {
+						return {
+							'Player ID': row.playerID,
+							'Team ID': row.teamID,
+							'lgID': row.lgID,
+							'First Name': row.first_name,
+							'Last Name': row.last_name,
+							G: row.G,
+							W: row.W,
+							L: row.L,
+							PCT: _AppUtilsEx2.default.formatAverage(row.W, row.W + row.L),
+							rank: row.rank
+						};
+					}.bind(this));
+	
+					if (err) {
+						console.log('error', err);return err;
+					}
+					this.setState({ managerList: managerList });
+				}.bind(this));
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_reactSimpleTable2.default, { className: 'table table-bordered table-striped', columns: this.state.managerHeaders, data: this.state.managerList })
+				);
+			}
+		}]);
+	
+		return Managers;
+	}(_react.Component);
+	
+	Managers.propTypes = {};
+	Managers.defaultProps = {};
+	exports.default = Managers;
 
 /***/ }
 /******/ ]);

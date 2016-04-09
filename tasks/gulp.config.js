@@ -19,14 +19,14 @@ module.exports = {
 	},
 
 	scripts: {
-		src: ['.src/js/**/*.js','./src/js/**/*.jsx'],
-		entry: './src/js/index.jsx',
-		dest: './dist/js',
+		src:      ['.src/js/**/*.js','./src/js/**/*.jsx','!.src/js/**/*rt.js'],
+		entry:    './src/js/index.jsx',
+		dest:     './dist/js',
 		filename: 'app.js'
 	},
 
 	lint: {
-		src:  ['src/js/**/*.js','tasks/**/*.js','specs/**/*Specs.js']
+		src:  ['src/js/**/*.js','tasks/**/*.js','specs/**/*Specs.js','!.src/js/**/*rt.js']
 	},
 
 	less: {
@@ -49,7 +49,7 @@ module.exports = {
 		src: ['./src/js/templates/**/*.rt'],
 		dest: './src/js/templates/'
 	},
-	
+
 	todo: {
 		src: [
 			'./src/js/**/*.js',

@@ -14,7 +14,6 @@ msg.init({showPipeFile: false, timestamp: true})
 
 gulp.task('eslint', () => {
 	let files = [].concat(config.scripts.src, config.scripts.main, config.lint.src)
-
 	return gulp.src(config.lint.src)
 		.on('error', handleErrors)
 		.pipe(eslint())
