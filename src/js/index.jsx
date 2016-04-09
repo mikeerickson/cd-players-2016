@@ -5,6 +5,7 @@ import React, {Component} from 'react'
 import ReactDOM           from 'react-dom'
 import Teams              from './components/Teams.jsx'
 import Managers           from './components/Managers.jsx'
+import BasicTable         from './components/BasicTable.jsx'
 
 export default class App extends Component {
 
@@ -25,8 +26,10 @@ export default class App extends Component {
 	render() {
 		return (
 			<div>
-				<h1>Managers 2016</h1>
+				<h2>Managers</h2>
 				<Managers />
+				<h2>Basic Bootstrap Table</h2>
+				<BasicTable />
 			</div>
 		)
 	}
