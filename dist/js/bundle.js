@@ -75,9 +75,9 @@
 	
 	var _Managers2 = _interopRequireDefault(_Managers);
 	
-	var _BasicTable = __webpack_require__(179);
+	var _ReactTable = __webpack_require__(179);
 	
-	var _BasicTable2 = _interopRequireDefault(_BasicTable);
+	var _ReactTable2 = _interopRequireDefault(_ReactTable);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -97,11 +97,10 @@
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 	
 			_this.state = {
-				fname: 'Mike',
-				lname: 'Erickson',
-				email: 'mike.erickson@mac.com'
+				config: {
+					name: 'Mike'
+				}
 			};
-	
 			return _this;
 		}
 	
@@ -114,15 +113,9 @@
 					_react2.default.createElement(
 						'h2',
 						null,
-						'Managers'
-					),
-					_react2.default.createElement(_Managers2.default, null),
-					_react2.default.createElement(
-						'h2',
-						null,
 						'Basic Bootstrap Table'
 					),
-					_react2.default.createElement(_BasicTable2.default, null)
+					_react2.default.createElement(_ReactTable2.default, { config: this.state.config, data: '', headers: '' })
 				);
 			}
 		}]);
@@ -22092,38 +22085,48 @@
 		return products;
 	}
 	
-	var data = addProducts(100);
-	console.log(data);
+	var data = addProducts(2);
+	console.log('data', data);
 	
 	var BasicTable = function (_Component) {
 		_inherits(BasicTable, _Component);
 	
-		function BasicTable() {
+		function BasicTable(props) {
 			_classCallCheck(this, BasicTable);
 	
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(BasicTable).apply(this, arguments));
+			console.log(props);
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(BasicTable).call(this, props));
 		}
 	
 		_createClass(BasicTable, [{
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
-					_reactBootstrapTable.BootstrapTable,
-					{ data: products },
+					'div',
+					null,
 					_react2.default.createElement(
-						_reactBootstrapTable.TableHeaderColumn,
-						{ dataField: 'id', isKey: true },
-						'Product ID'
+						'h1',
+						null,
+						'Oh So Pretty, So Very Pretty'
 					),
 					_react2.default.createElement(
-						_reactBootstrapTable.TableHeaderColumn,
-						{ dataField: 'name' },
-						'Product Name'
-					),
-					_react2.default.createElement(
-						_reactBootstrapTable.TableHeaderColumn,
-						{ dataField: 'price' },
-						'Product Price'
+						_reactBootstrapTable.BootstrapTable,
+						{ data: products },
+						_react2.default.createElement(
+							_reactBootstrapTable.TableHeaderColumn,
+							{ dataField: 'id', isKey: true },
+							'Product ID'
+						),
+						_react2.default.createElement(
+							_reactBootstrapTable.TableHeaderColumn,
+							{ dataField: 'name' },
+							'Product Name'
+						),
+						_react2.default.createElement(
+							_reactBootstrapTable.TableHeaderColumn,
+							{ dataField: 'price' },
+							'Product Price'
+						)
 					)
 				);
 			}

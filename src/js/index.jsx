@@ -5,7 +5,7 @@ import React, {Component} from 'react'
 import ReactDOM           from 'react-dom'
 import Teams              from './components/Teams.jsx'
 import Managers           from './components/Managers.jsx'
-import BasicTable         from './components/BasicTable.jsx'
+import ReactTable         from './components/ReactTable.jsx'
 
 export default class App extends Component {
 
@@ -16,20 +16,17 @@ export default class App extends Component {
 		super(props)
 
 		this.state = {
-			fname: 'Mike',
-			lname: 'Erickson',
-			email: 'mike.erickson@mac.com'
+			config: {
+				name: 'Mike'
+			}
 		}
-
 	}
 
 	render() {
 		return (
 			<div>
-				<h2>Managers</h2>
-				<Managers />
 				<h2>Basic Bootstrap Table</h2>
-				<BasicTable />
+				<ReactTable config={this.state.config} data="" headers=""/>
 			</div>
 		)
 	}

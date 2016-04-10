@@ -18,17 +18,24 @@ function addProducts(quantity) {
 	return products;
 }
 
-let data = addProducts(100);
-console.log(data);
-
+let data = addProducts(2);
+console.log('data', data);
 export default class BasicTable extends Component {
+	constructor(props) {
+		console.log(props);
+		super(props)
+	}
+
 	render() {
-		return (
-			<BootstrapTable data={ products }>
-				<TableHeaderColumn dataField='id' isKey={ true }>Product ID</TableHeaderColumn>
-				<TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
-				<TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
-			</BootstrapTable>
-		);
+			return (
+			<div>
+				<h1>Oh So Pretty, So Very Pretty</h1>
+				<BootstrapTable data={ products }>
+					<TableHeaderColumn dataField='id' isKey={ true }>Product ID</TableHeaderColumn>
+					<TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
+					<TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
+				</BootstrapTable>
+			</div>
+			);
 	}
 }
