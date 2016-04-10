@@ -16,17 +16,45 @@ export default class App extends Component {
 		super(props)
 
 		this.state = {
-			config: {
-				name: 'Mike'
-			}
+			config:  {},
+			data:    [],
+			headers: [{key: 1, colName: 'colName'}]
 		}
+	}
+
+	createData(quantity) {
+
+		const startId  = 1000
+		const products = []
+
+		for (let i = 0; i < quantity; i++) {
+			const id = startId + i;
+			products.push({
+				id: id,
+				name: 'Item name ' + id,
+				price: 2100 + i
+			});
+		}
+		return products
+	}
+
+	componentWillMount() {
+		let products = this.createData(10)
+		this.setState({data: products})
+	}
+
+	componentDidMount() {
 	}
 
 	render() {
 		return (
 			<div>
 				<h2>Basic Bootstrap Table</h2>
-				<ReactTable config={this.state.config} data="" headers=""/>
+				<ReactTable
+					config={this.state.config}
+					data={this.state.data}
+					headers={this.state.headers}
+				/>
 			</div>
 		)
 	}

@@ -97,14 +97,40 @@
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 	
 			_this.state = {
-				config: {
-					name: 'Mike'
-				}
+				config: {},
+				data: [],
+				headers: [{ key: 1, colName: 'colName' }]
 			};
 			return _this;
 		}
 	
 		_createClass(App, [{
+			key: 'createData',
+			value: function createData(quantity) {
+	
+				var startId = 1000;
+				var products = [];
+	
+				for (var i = 0; i < quantity; i++) {
+					var id = startId + i;
+					products.push({
+						id: id,
+						name: 'Item name ' + id,
+						price: 2100 + i
+					});
+				}
+				return products;
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				var products = this.createData(10);
+				this.setState({ data: products });
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {}
+		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
@@ -115,7 +141,11 @@
 						null,
 						'Basic Bootstrap Table'
 					),
-					_react2.default.createElement(_ReactTable2.default, { config: this.state.config, data: '', headers: '' })
+					_react2.default.createElement(_ReactTable2.default, {
+						config: this.state.config,
+						data: this.state.data,
+						headers: this.state.headers
+					})
 				);
 			}
 		}]);
@@ -22069,49 +22099,25 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint max-len: 0 */
 	/* eslint jsx-quotes: 0 */
 	
+	var ReactTable = function (_Component) {
+		_inherits(ReactTable, _Component);
 	
-	var products = [];
+		function ReactTable(props) {
+			_classCallCheck(this, ReactTable);
 	
-	function addProducts(quantity) {
-		var startId = products.length;
-		for (var i = 0; i < quantity; i++) {
-			var id = startId + i;
-			products.push({
-				id: id,
-				name: 'Item name ' + id,
-				price: 2100 + i
-			});
-		}
-		return products;
-	}
-	
-	var data = addProducts(2);
-	console.log('data', data);
-	
-	var BasicTable = function (_Component) {
-		_inherits(BasicTable, _Component);
-	
-		function BasicTable(props) {
-			_classCallCheck(this, BasicTable);
-	
-			console.log(props);
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(BasicTable).call(this, props));
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(ReactTable).call(this, props));
 		}
 	
-		_createClass(BasicTable, [{
+		_createClass(ReactTable, [{
 			key: 'render',
 			value: function render() {
+				console.log('headers', this.props.headers);
 				return _react2.default.createElement(
 					'div',
 					null,
 					_react2.default.createElement(
-						'h1',
-						null,
-						'Oh So Pretty, So Very Pretty'
-					),
-					_react2.default.createElement(
 						_reactBootstrapTable.BootstrapTable,
-						{ data: products },
+						{ data: this.props.data },
 						_react2.default.createElement(
 							_reactBootstrapTable.TableHeaderColumn,
 							{ dataField: 'id', isKey: true },
@@ -22132,10 +22138,10 @@
 			}
 		}]);
 	
-		return BasicTable;
+		return ReactTable;
 	}(_react.Component);
 
-	exports.default = BasicTable;
+	exports.default = ReactTable;
 
 /***/ },
 /* 180 */

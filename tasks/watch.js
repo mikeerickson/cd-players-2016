@@ -18,16 +18,16 @@ if (run) { msg.warn('*** Running Tasks: Enabled ***') }
 // used in gulp.tasks below (returns either task arrays or empty array)
 let runTasks = (tasks) => {return (run) ? tasks : [] }
 
-gulp.task('watch:dev', runTasks(['webpack','test:jest']), () =>{
+gulp.task('watch:dev', runTasks(['webpack']), () =>{
   files = [].concat(config.scripts.src, config.scripts.entry)
 	msg.note(`*** Dev Mode [${utils.ellipsis(files.toString(),50)}] ***`)
-	gulp.watch(files,['webpack', 'test:jest'])
+	gulp.watch(files, ['webpack'])
 })
 
 gulp.task('watch:scripts', runTasks(['webpack', 'test:jest', 'test:mocha']), () =>{
 	files = [].concat(config.scripts.src, config.scripts.entry, config.lint.src)
 	msg.note(`*** Watching Scripts [${utils.ellipsis(files.toString(),50)}] ***`)
-	gulp.watch(files, ['test:jest', 'test:mocha', 'webpack', 'todo'])
+	gulp.watch(files, ['test:jest', 'test:mocha', 'webpack'])
 })
 
 gulp.task('watch:styles', runTasks(['build:styles']), () => {
