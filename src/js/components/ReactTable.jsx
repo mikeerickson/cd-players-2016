@@ -13,7 +13,7 @@ export default class ReactTable extends Component {
 		console.log('headers', this.props.headers)
 			return (
 				<div>
-					<BootstrapTable data={ this.props.data }>
+					<BootstrapTable striped={true} hover={true} condensed={true} data={ this.props.data }>
 						<TableHeaderColumn dataField='id' isKey={ true }>Product ID</TableHeaderColumn>
 						<TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
 						<TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>

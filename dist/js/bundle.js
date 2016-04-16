@@ -22117,7 +22117,7 @@
 					null,
 					_react2.default.createElement(
 						_reactBootstrapTable.BootstrapTable,
-						{ data: this.props.data },
+						{ striped: true, hover: true, condensed: true, data: this.props.data },
 						_react2.default.createElement(
 							_reactBootstrapTable.TableHeaderColumn,
 							{ dataField: 'id', isKey: true },
